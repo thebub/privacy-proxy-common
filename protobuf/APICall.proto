@@ -1,7 +1,7 @@
 package net.thebub.privacyproxy;
 
 enum APICommand {
-	none = 0;
+	unknown = 0;
 	login = 1;
 	logout = 2;
 }
