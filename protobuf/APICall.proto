@@ -25,7 +25,7 @@ message APICall {
 	required APICommand command = 1;
 	optional string sessionKey = 3;
 
-	optional bytes arguemnts = 2;
+	optional bytes arguments = 2;
 }
 
 message APIResponse {
