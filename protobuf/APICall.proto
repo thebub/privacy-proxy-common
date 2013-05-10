@@ -14,13 +14,6 @@ enum PersonalDataTypes {
 	adress = 3;
 }
 
-enum ErrorCodes {
-	none = 0;
-	badRequest = 1;
-	unauthorized = 2;
-	forbidden = 3;
-}
-
 message APICall {
 	required APICommand command = 1;
 	optional string sessionKey = 3;
@@ -29,6 +22,13 @@ message APICall {
 }
 
 message APIResponse {
+	enum ErrorCodes {
+		none = 0;
+		badRequest = 1;
+		unauthorized = 2;
+		forbidden = 3;
+	}
+
 	required APICommand command = 1;
 
 	required bool success = 2;
