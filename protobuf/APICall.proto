@@ -1,17 +1,25 @@
 package net.thebub.privacyproxy;
 
 enum APICommand {
-		login = 0;
-		logout = 1;
-	}
+	none = 0;
+	login = 1;
+	logout = 2;
+}
 
 
 enum PersonalDataTypes {
-		phone = 0;
-		creditcard = 1;
-		date = 2;
-		adress = 3;
-	}
+	phone = 0;
+	creditcard = 1;
+	date = 2;
+	adress = 3;
+}
+
+enum ErrorCodes {
+	none = 0;
+	badRequest = 1;
+	unauthorized = 2;
+	forbidden = 3;
+}
 
 message APICall {
 	required APICommand command = 1;
@@ -22,7 +30,9 @@ message APICall {
 
 message APIResponse {
 	required APICommand command = 1;
+
 	required bool success = 2;
+	optional ErrorCodes errorCode = 4;
 
 	optional bytes data = 3;
 }
@@ -36,6 +46,11 @@ message CreateUserData {
 message LoginData {
 	required string username = 1;
 	required string password = 2;
+}
+
+message LoginResponse {
+	required string username = 1;
+	required string sessionID = 2;
 }
 
 message WebLogData {
