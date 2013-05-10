@@ -5,6 +5,14 @@ enum APICommand {
 		logout = 1;
 	}
 
+
+enum PersonalDataTypes {
+		phone = 0;
+		creditcard = 1;
+		date = 2;
+		adress = 3;
+	}
+
 message APICall {
 	required APICommand command = 1;
 	optional string sessionKey = 3;
@@ -17,4 +25,33 @@ message APIResponse {
 	required bool success = 2;
 
 	optional bytes data = 3;
+}
+
+message CreateUserData {
+	required string username = 1;
+	required string password = 2;
+	required string email = 3;
+}
+
+message LoginData {
+	required string username = 1;
+	required string password = 2;
+}
+
+message WebLogData {
+
+	message WebLogPage {
+
+		message WebLogPageEntry {
+			required PersonalDataTypes type = 1;
+			required string description = 2;
+			required string date = 3;
+		}
+
+		required string website = 1;
+
+		repeated WebLogPageEntry entries = 2;
+	}
+
+	repeated WebLogPage pages = 1;
 }
