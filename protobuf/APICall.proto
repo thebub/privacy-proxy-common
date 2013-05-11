@@ -4,6 +4,8 @@ enum APICommand {
 	unknown = 0;
 	login = 1;
 	logout = 2;
+	getWebpages = 3;
+	getWebpageData = 4;
 }
 
 
@@ -53,20 +55,28 @@ message LoginResponse {
 	required string sessionID = 2;
 }
 
-message WebLogData {
+message WebLogWebsitesResponse {
 
-	message WebLogPage {
-
-		message WebLogPageEntry {
-			required PersonalDataTypes type = 1;
-			required string description = 2;
-			required string date = 3;
-		}
-
-		required string website = 1;
-
-		repeated WebLogPageEntry entries = 2;
+	message WebLogWebsite {
+		required int32 id = 1;
+		required string website = 2;
 	}
 
-	repeated WebLogPage pages = 1;
+	repeated WebLogWebsite pages = 1;
+}
+
+message WebLogWebsiteDataRequest {
+	required int32 id = 1;
+}
+
+message WebLogWebsiteDataResponse {
+	required int32 id = 1;
+
+	message WebLogWebsiteData {
+		required PersonalDataTypes type = 1;
+		required string description = 2;
+		required string date = 3;
+	}
+
+	repeated WebLogWebsiteData data = 2;
 }
