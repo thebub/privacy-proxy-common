@@ -8,6 +8,12 @@ enum APICommand {
 	getWebpageData = 4;
 }
 
+enum ErrorCodes {
+	none = 0;
+	badRequest = 1;
+	unauthorized = 2;
+	forbidden = 3;
+}
 
 enum PersonalDataTypes {
 	phone = 0;
@@ -16,11 +22,9 @@ enum PersonalDataTypes {
 	adress = 3;
 }
 
-enum ErrorCodes {
-	none = 0;
-	badRequest = 1;
-	unauthorized = 2;
-	forbidden = 3;
+message PersonalDataEntry {
+	required PersonalDataTypes type = 1;
+	required string description = 2;
 }
 
 message APICall {
@@ -73,9 +77,9 @@ message WebLogWebsiteDataResponse {
 	required int32 id = 1;
 
 	message WebLogWebsiteData {
-		required PersonalDataTypes type = 1;
-		required string description = 2;
-		required string date = 3;
+		repeated PersonalDataEntry entry = 1;
+
+		required string date = 2;
 	}
 
 	repeated WebLogWebsiteData data = 2;
