@@ -28,9 +28,10 @@ enum PersonalDataTypes {
 }
 
 message PersonalDataEntry {
-	required int32 id = 1;
+	optional int32 id = 1;
 	required PersonalDataTypes type = 2;
 	required string description = 3;
+	optional string hash = 4;
 }
 
 message APICall {
