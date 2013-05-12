@@ -6,6 +6,11 @@ enum APICommand {
 	logout = 2;
 	getWebpages = 3;
 	getWebpageData = 4;
+	createUser = 5;
+	updateUser = 6;
+	deleteUser = 7;
+	getSettings = 8;
+	updateSetting = 9;
 }
 
 enum ErrorCodes {
@@ -23,8 +28,9 @@ enum PersonalDataTypes {
 }
 
 message PersonalDataEntry {
-	required PersonalDataTypes type = 1;
-	required string description = 2;
+	required int32 id = 1;
+	required PersonalDataTypes type = 2;
+	required string description = 3;
 }
 
 message APICall {
@@ -41,12 +47,6 @@ message APIResponse {
 	optional ErrorCodes errorCode = 4;
 
 	optional bytes data = 3;
-}
-
-message CreateUserData {
-	required string username = 1;
-	required string password = 2;
-	required string email = 3;
 }
 
 message LoginData {
@@ -83,4 +83,34 @@ message WebLogWebsiteDataResponse {
 	}
 
 	repeated WebLogWebsiteData data = 2;
+}
+
+message CreateUserRequest {
+	required string username = 1;
+	required string password = 2;
+	required string email = 3;
+}
+
+message UpdateUserRequest {
+	optional string password = 1;
+	optional string email = 2;
+}
+
+message DeleteUserRequest {
+	required string password = 1;
+}
+
+message GetSettingsResponse {
+	repeated PersonalDataEntry entry = 1;
+}
+
+message UpdateSettingRequest {
+	enum SettingAction {
+		create = 0;
+		update = 1;
+		delete = 2;
+	}
+
+	required SettingAction action = 1;
+	required PersonalDataEntry data = 2;
 }
