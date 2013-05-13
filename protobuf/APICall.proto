@@ -27,6 +27,12 @@ enum PersonalDataTypes {
 	adress = 3;
 }
 
+enum SettingAction {
+	create = 0;
+	update = 1;
+	delete = 2;
+}
+
 message PersonalDataEntry {
 	optional int32 id = 1;
 	required PersonalDataTypes type = 2;
@@ -106,12 +112,6 @@ message GetSettingsResponse {
 }
 
 message UpdateSettingRequest {
-	enum SettingAction {
-		create = 0;
-		update = 1;
-		delete = 2;
-	}
-
 	required SettingAction action = 1;
 	required PersonalDataEntry data = 2;
 }
