@@ -1,0 +1,44 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
+<title>Privacy Proxy Test Page</title>
+</head>
+<body>
+<h1>Privacy Proxy Analysis Test Page</h1>
+Use the form provided on this page to test the different transmission types.
+<hr>
+<h3>POST Test:</h3><br>
+<form action="index.html" method="post">
+Credit card 1: <input type="text" name="creditcard1"><br>
+Credit card 2: <input type="text" name="creditcard2"><br>
+Date 1: <input type="text" name="date1"><br>
+Date 2: <input type="text" name="date2"><br>
+Email 1: <input type="text" name="email1"><br>
+Email 2: <input type="text" name="email2"><br>
+<button type="submit">Send</button>
+</form>
+<hr>
+<h3>GET Test:</h3><br>
+<form action="index.html" method="get">
+Credit card 1: <input type="text" name="creditcard1"><br>
+Credit card 2: <input type="text" name="creditcard2"><br>
+Date 1: <input type="text" name="date1"><br>
+Date 2: <input type="text" name="date2"><br>
+Email 1: <input type="text" name="email1"><br>
+Email 2: <input type="text" name="email2"><br>
+<button type="submit">Send</button>
+</form>
+<hr>
+<h3>AJAX JSON Test:</h3><br>
+<form onsubmit="alert('Sending...')" method="get">
+Credit card 1: <input type="text" name="creditcard1"><br>
+Credit card 2: <input type="text" name="creditcard2"><br>
+Date 1: <input type="text" name="date1"><br>
+Date 2: <input type="text" name="date2"><br>
+Email 1: <input type="text" name="email1"><br>
+Email 2: <input type="text" name="email2"><br>
+<button type="submit">Send</button>
+</form>
+</body>
+</html>
