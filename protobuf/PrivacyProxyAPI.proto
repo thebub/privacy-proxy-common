@@ -25,6 +25,7 @@ enum PersonalDataTypes {
 	creditcard = 1;
 	date = 2;
 	adress = 3;
+	email = 4;
 }
 
 enum SettingAction {
