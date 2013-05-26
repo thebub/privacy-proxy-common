@@ -1,10 +1,33 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
+<meta http-equiv="Content-Type" content="text/html;">
 <title>Privacy Proxy Test Page</title>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
 </head>
 <body>
+<script type="text/javascript">
+function sendAJAX(formID) {
+	var formElement = $(formID);
+	var children = formElement.children('input');
+	
+	var requestData = {}
+	
+	children.each(function(index,element) {
+		var jElement = $(element);
+		requestData[jElement.attr('name')] = jElement.val();
+	});
+	
+	var ajaxRequest = $.ajax({
+		url: "index.html",
+		data: requestData
+	})
+    .done(function() { alert("AJAX SUCCESS"); })
+    .fail(function() { alert("AJAX ERROR"); });
+	
+	return false;
+}
+</script>
 <h1>Privacy Proxy Analysis Test Page</h1>
 Use the form provided on this page to test the different transmission types.
 <hr>
@@ -31,7 +54,7 @@ Email 2: <input type="text" name="email2"><br>
 </form>
 <hr>
 <h3>AJAX JSON Test:</h3><br>
-<form onsubmit="alert('Sending...')" method="get">
+<form id="ajaxForm" onsubmit="return sendAJAX('#ajaxForm')">
 Credit card 1: <input type="text" name="creditcard1"><br>
 Credit card 2: <input type="text" name="creditcard2"><br>
 Date 1: <input type="text" name="date1"><br>
