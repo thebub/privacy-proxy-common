@@ -20,7 +20,8 @@ function sendAJAX(formID) {
 	
 	var ajaxRequest = $.ajax({
 		url: "index.html",
-		data: requestData
+		data: requestData,
+		cache: false
 	})
     .done(function() { alert("AJAX SUCCESS"); })
     .fail(function() { alert("AJAX ERROR"); });
